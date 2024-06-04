@@ -31,7 +31,7 @@ class Products(val productService: ProductService) {
     }
 
     fun isValidProduct(product: Product): Boolean {
-        if (product.inventory == null || product.type == null || product.name == null)
+        if (product.inventory == null || product.type == null || product.name == null || product.cost == null)
             return false
         return isValidString(product.name)  && isValidString(product.type.name)
     }
