@@ -30,7 +30,7 @@ class Products(val productService: ProductService) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapOf("error" to "Invalid product"))
     }
 
-    fun isValidProduct(product: Product): Boolean {
+    private fun isValidProduct(product: Product): Boolean {
         if (product.inventory == null || product.type == null || product.name == null || product.cost == null)
             return false
         return isValidString(product.name)  && isValidString(product.type.name)
