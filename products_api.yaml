@@ -103,6 +103,7 @@ components:
         - food
         - gadget
         - other
+        - icecream
     ProductId:
       title: Product Id
       type: object
@@ -121,7 +122,6 @@ components:
       properties:
         timestamp:
           type: string
-          format: date-time
         status:
           type: integer
         error:

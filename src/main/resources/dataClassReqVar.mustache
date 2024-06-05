@@ -1,0 +1,6 @@
+{{#useBeanValidation}}{{>beanValidation}}{{>beanValidationModel}}{{/useBeanValidation}}
+    {{#isInherited}} override{{/isInherited}} {{>modelMutable}} {{{name}}}: {{#isEnum}}{{#isArray}}{{baseType}}<{{/isArray}}{{classname}}.{{{nameInPascalCase}}}{{#isArray}}>{{/isArray}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{#isNullable}}?{{/isNullable}}{{#defaultValue}} = {{^isNumber}}{{{defaultValue}}}{{/isNumber}}{{#isNumber}}{{{dataType}}}("{{{defaultValue}}}"){{/isNumber}}{{/defaultValue}}
+
+{{#isNameField}}
+    @field:Pattern(regexp = "^(?!.*true|.*false)[a-zA-Z]*$", flags = [Pattern.Flag.CASE_INSENSITIVE], message = "Name can only contain letters from a to z and should not contain boolean values")
+{{/isNameField}}

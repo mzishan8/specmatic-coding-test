@@ -24,6 +24,10 @@ jobs:
       with:
         distribution: 'oracle'
         java-version: ${{ matrix.java }}
+    - name: Gnenerate Data Classes
+      working-directory: main
+      run: mvn clean generate-sources
     - name: Build with Maven
       working-directory: main
       run: mvn test
+
