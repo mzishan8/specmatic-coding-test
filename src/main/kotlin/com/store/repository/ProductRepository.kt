@@ -1,8 +1,5 @@
 package com.store.repository
 
-import com.store.model.Product
-import com.store.model.ProductDetails
-import com.store.model.ProductType
 import org.springframework.stereotype.Repository
 import java.util.concurrent.ConcurrentHashMap
 
