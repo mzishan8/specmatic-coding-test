@@ -8,21 +8,22 @@ import java.util.concurrent.ConcurrentHashMap
 
 @Repository
 class ProductRepository {
-    private val products = ConcurrentHashMap<Int, Product>()
+    private val products = ConcurrentHashMap<Int, Map<String, Any?>>()
     private var count = 1
 
-    fun getAllProducts(): List<Product> {
+    fun getAllProducts(): List<Any> {
         return products.values.toList()
     }
 
-    fun findByType(type: ProductType): List<Product> {
-        return products.values.filter { it.type == type }
+    fun findByType(type: String): List<Any> {
+        return products.values.filter { it["type"] == type }
     }
 
-    fun saveProduct(product: ProductDetails): Product {
+    fun saveProduct(product: Map<String, Any>): Int {
         val id = count
-        products[id] = Product(id, product.name, product.type, product.inventory, product.cost)
+        println("It is here  === " + product.values)
+        products[id] = product + ("id" to id)
         count++
-        return products[id]!!
+        return id
     }
 }

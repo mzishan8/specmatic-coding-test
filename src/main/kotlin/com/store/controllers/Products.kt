@@ -15,15 +15,15 @@ import javax.validation.Valid
 class Products(val productService: ProductService) {
 
     @GetMapping()
-    fun getProducts(@RequestParam(name = "type", required = false) type: ProductType?): List<Product> {
+    fun getProducts(@RequestParam(name = "type", required = false) type: String?): List<Any> {
         return productService.getProductsByType(type)
     }
 
     @PostMapping()
     fun addProduct(
-        @Valid @RequestBody product: ProductDetails
+        @Valid @RequestBody product: Map<String, Any>
     ): Any {
-        if (!isValidString(product.name)) throw MethodArgumentNotValidException(null, null)
+//        if (!isValidString(product.name)) throw MethodArgumentNotValidException(null, null)
         return ResponseEntity.status(HttpStatus.CREATED).body(mapOf("id" to productService.saveProduct(product)))
     }
 

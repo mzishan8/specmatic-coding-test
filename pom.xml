@@ -147,6 +147,22 @@
             <artifactId>kotlin-reflect</artifactId>
             <version>1.9.22</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openapi4j/openapi-operation-validator -->
+        <dependency>
+            <groupId>org.openapi4j</groupId>
+            <artifactId>openapi-operation-validator</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.openapi4j/openapi-core -->
+        <dependency>
+            <groupId>org.openapi4j</groupId>
+            <artifactId>openapi-core</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>

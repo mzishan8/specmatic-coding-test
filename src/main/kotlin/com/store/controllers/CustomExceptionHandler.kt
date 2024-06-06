@@ -2,6 +2,7 @@ package com.store.controllers
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.store.model.ErrorResponseBody
+import org.openapi4j.core.validation.ValidationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -12,8 +13,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 
 @ControllerAdvice
 class CustomExceptionHandler {
-    @ExceptionHandler(MethodArgumentNotValidException::class)
 
+    @ExceptionHandler(ValidationException::class)
+    fun handleValidationException(exception: ValidationException): ResponseEntity<String> {
+        return ResponseEntity("Validation error: ${exception.message}", HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleMethodArgumentNotValidException(ex: MethodArgumentNotValidException): ResponseEntity<Any> {
         val errors = ex.bindingResult.allErrors.map { error ->
             (error as FieldError).field + " " + error.defaultMessage

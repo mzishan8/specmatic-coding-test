@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProductService(private val productRepository: ProductRepository) {
-    fun getProductsByType(type: ProductType?): List<Product> {
+    fun getProductsByType(type: String?): List<Any> {
         if (type == null)
             return productRepository.getAllProducts()
         return productRepository.findByType(type)
     }
 
-    fun saveProduct(product: ProductDetails): Int {
-        return productRepository.saveProduct(product).id
+    fun saveProduct(product: Map<String, Any>): Int {
+        return productRepository.saveProduct(product)
     }
 }
